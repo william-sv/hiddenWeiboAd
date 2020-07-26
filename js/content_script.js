@@ -1,12 +1,14 @@
 document.onreadystatechange = function () {
   if (document.readyState == 'complete') {
-    let targetNode = document.getElementsByClassName('WB_cardwrap WB_feed_type S_bg2 WB_feed_like');
+    let targetNode = document.getElementsByClassName('WB_feed WB_feed_v3 WB_feed_v4');
     if (targetNode.length > 0) {
-      for (const childNode of targetNode) {
-        if (childNode.getAttribute('feedtype') == 'ad') {
-          childNode.style.display = 'none';
+      targetNode = targetNode[0];
+      targetNode.childNodes.forEach(ele => {
+        if (ele.childNodes.length > 0 && ele.getAttribute('feedtype') == 'ad') {
+          ele.style.display = 'none';
+          console.log('隐藏了一个广告~');
         }
-      }
+      });
       let config = {
         attributes: true,
         childList: true,
@@ -17,11 +19,12 @@ document.onreadystatechange = function () {
           let type = mutation.type;
           switch (type) {
             case "childList":
-              for (const childNode of targetNode) {
-                if (childNode.getAttribute('feedtype') == 'ad') {
-                  childNode.style.display = 'none';
+              targetNode.childNodes.forEach(ele => {
+                if (ele.childNodes.length > 0 && ele.getAttribute('feedtype') == 'ad') {
+                  ele.style.display = 'none';
+                  console.log('隐藏了一个广告~');
                 }
-              }
+              });
               break;
             default:
               break;
