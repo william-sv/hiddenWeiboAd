@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "隐藏微博广告",
+    "version": "1.0.0",
+    "description": "隐藏微博广告",
+    "icons": {
+      "128": "img/icon.png"
+    },
+    "browser_action": {
+      "default_icon": "img/icon.png",
+      "default_title": "隐藏微博广告"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://weibo.com/*"
+        ],
+        "js": [
+          "js/content_script.js"
+        ],
+        "run_at": "document_end"
+      }
+    ],
+    "web_accessible_resources": [
+      ""
+    ]
+  }
