@@ -4,7 +4,7 @@ document.onreadystatechange = function () {
     if (targetNode.length > 0) {
       targetNode = targetNode[0];
       targetNode.childNodes.forEach(ele => {
-        if (ele.childNodes.length > 0 && ele.getAttribute('feedtype') == 'ad') {
+        if (ele.childNodes.length > 0 && ele.getAttribute('feedtype') == 'ad'  && ele.style.display != 'none') {
           ele.style.display = 'none';
           console.log('隐藏了一个广告~');
         }
@@ -20,7 +20,7 @@ document.onreadystatechange = function () {
           switch (type) {
             case "childList":
               targetNode.childNodes.forEach(ele => {
-                if (ele.childNodes.length > 0 && ele.getAttribute('feedtype') == 'ad') {
+                if (ele.childNodes.length > 0 && ele.getAttribute('feedtype') == 'ad' && ele.style.display != 'none') {
                   ele.style.display = 'none';
                   console.log('隐藏了一个广告~');
                 }
